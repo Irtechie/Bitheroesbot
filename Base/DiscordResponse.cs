@@ -22,6 +22,9 @@ namespace BitheroesBot.Base
             this.discordArguments = arguments;
             switch(command)
             {
+                //All Title 
+
+                //By Command
                 case DiscordCommand.None:
                     Title = "Not a Command"; 
                     break;
@@ -42,6 +45,9 @@ namespace BitheroesBot.Base
         }
         public void FormatTitle(DiscordCommand command)
         {
+            //All Title 
+
+            //By Command
             switch (command)
             {
                 case DiscordCommand.None:
@@ -61,6 +67,9 @@ namespace BitheroesBot.Base
         }
         public void FormatAdditionalHeader(DiscordCommand command)
         {
+            //All AdditionalHeader 
+
+            //By Command
             switch (command)
             {
                 case DiscordCommand.None:
@@ -77,6 +86,9 @@ namespace BitheroesBot.Base
         }
         public void FormatBody1(DiscordCommand command)
         {
+            //All Body1 
+
+            //By Command
             switch (command)
             {
                 case DiscordCommand.None:
@@ -93,6 +105,9 @@ namespace BitheroesBot.Base
         }
         public void FormatBody2(DiscordCommand command)
         {
+            //All Body2
+
+            //By Command
             switch (command)
             {
                 case DiscordCommand.None:
@@ -109,6 +124,9 @@ namespace BitheroesBot.Base
         }
         public void FormatFooter(DiscordCommand command)
         {
+            //All Footer 
+
+            //By Command
             switch (command)
             {
                 case DiscordCommand.None:
@@ -134,16 +152,11 @@ namespace BitheroesBot.Base
 
             //do your formatting here ## etc to help the text format to how you want it to look in discord. 
             //specific to call formatting would be done before this point, this is formatting you want applied to all messages after you have done specific formating. 
-            var title = Title;
-            var additionalHeader = AdditionalHeader;
-            var body1 = Body1;
-            var body2 = Body2;
-            var footer = Footer;
-
+          
             //Can add Case statement here based on command type to format based on command. 
 
 
-            return String.Format($"{title}\n {additionalHeader}\n {body1}\n {body2}\n {footer}\n");
+            return String.Format($"{Title}\n {AdditionalHeader}\n {Body1}\n {Body2}\n {Footer}\n");
         
         
         }
