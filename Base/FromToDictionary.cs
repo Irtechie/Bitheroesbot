@@ -14,16 +14,22 @@ namespace BitheroesBot.Constants
         //Set all your commands in here that make sense. Example v => VerifyInGamePlayer
         public static List<FromTo> All = new List<FromTo>()
         {
+            //basically a more foolproof way to make short to long names. 
+            //shortnames are lowercase, longer are propercase to match constants
+            new FromTo(string.Empty, String.Empty),
             new FromTo(DiscordCommandConstants.v, DiscordCommandConstants.VerifyInGamePlayer),
             new FromTo(DiscordCommandConstants.wb, DiscordCommandConstants.RequestWBGroup),
+            new FromTo(DiscordCommandConstants.myid, DiscordCommandConstants.GetMyExtendedId)
         };
         public static string ConvertFromTo(string from)
         {
-            if (from.Trim() == "")
+            from = from.ToLower().Trim();
+            if (from == "")
             {
-                return "";
+                return from;
             }
-            return All.Where(e => e.From.ToLower().Trim() == from.ToLower().Trim()).FirstOrDefault().To;
+
+            return All.Where(e => e.From.ToLower().Trim() == from).FirstOrDefault().To;
         }
 
         public static DiscordCommand CreateCommandFromInputText(string commandText)

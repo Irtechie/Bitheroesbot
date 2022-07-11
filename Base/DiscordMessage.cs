@@ -14,10 +14,10 @@ namespace BitheroesBot.Base
         public DiscordResponse Response {get; set;}
         public DiscordMessage(SocketMessage message)
         {
-            //I do cleanup in this method. 
+            //I do parsing in this method. 
             Arguments = new DiscordArguments(message);
             Command = FromToDictionary.CreateCommandFromInputText(Arguments.CommandText);
-            Response = new DiscordResponse(Command, Arguments);
+            Response = new DiscordResponse(Command, Arguments, message);
         }
     }
 }

@@ -18,47 +18,56 @@ namespace BitheroesBot.Base
         {
             var messageTrimmed = message.Content.Trim();
             var remainingMessage = messageTrimmed;
+            var start = 0;
+            var end = remainingMessage.NextSpace();
             //could probably be written less directly in iterations. 
-            if (!remainingMessage.StartsWith("!") || remainingMessage.NextSpace() == -1)
+            if (!remainingMessage.StartsWith("!"))
             {
                 CommandText = string.Empty;
                 Argument1 = remainingMessage;
                 return;
             }
-            var start = 1;
-            var end = remainingMessage.NextSpace();
+            remainingMessage = remainingMessage.Substring(1); //get rid of !
+
+            if (end < 1)
+            {
+                CommandText = FromToDictionary.ConvertFromTo(remainingMessage);
+                return;
+            }
+            end = remainingMessage.NextSpace();
             CommandText = FromToDictionary.ConvertFromTo(remainingMessage.Substring(start, end));
-            remainingMessage = remainingMessage.Substring(end);
+            remainingMessage = remainingMessage.Substring(end).Trim(); 
 
             start = 0;
             end = remainingMessage.NextSpace();
-            if (end == -1)
+            if (end < 1)
             {
                 Argument1 = remainingMessage;
                 return;
             }
-            Argument1 = FromToDictionary.ConvertFromTo(remainingMessage.Substring(start, end));
-            remainingMessage = remainingMessage.Substring(end);
+            Argument1 = remainingMessage.Substring(start, end);
+            remainingMessage = remainingMessage.Substring(end).Trim();
 
 
             start = 0;
             end = remainingMessage.NextSpace();
-            if (end == -1)
+            if (end < 1)
             {
                 Argument2 = remainingMessage;
                 return;
             }
-            Argument2 = FromToDictionary.ConvertFromTo(remainingMessage.Substring(start, end));
-            remainingMessage = remainingMessage.Substring(end);
+            Argument2 = remainingMessage.Substring(start, end);
+            remainingMessage = remainingMessage.Substring(end).Trim();
 
             start = 0;
             end = remainingMessage.NextSpace();
-            if (end == -1)
+            if (end < 1)
             {
                 Argument3 = remainingMessage;
                 return;
             }
-            Argument3 = FromToDictionary.ConvertFromTo(remainingMessage.Substring(start, end));
+            Argument3 = remainingMessage.Substring(start, end).Trim();
+            remainingMessage = remainingMessage.Substring(end).Trim();
             Argument4 = remainingMessage;
 
         }

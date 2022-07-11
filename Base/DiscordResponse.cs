@@ -1,4 +1,5 @@
 ﻿using BitheroesBot.Enums;
+using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,9 +13,10 @@ namespace BitheroesBot.Base
         public string Body1 { get; set; } = string.Empty;
         public string Body2 { get; set; } = string.Empty;
         public string Footer { get; set; } = string.Empty;
-        private DiscordCommand discordCommand;
-        private DiscordArguments discordArguments;
-        public DiscordResponse(DiscordCommand command, DiscordArguments arguments)
+        public DiscordCommand discordCommand { get; private set; }
+        public DiscordArguments discordArguments { get; private set; }
+        public SocketMessage Original { get; private set; }
+        public DiscordResponse(DiscordCommand command, DiscordArguments arguments, SocketMessage original)
         {
             this.discordCommand = command;
             this.discordArguments = arguments;
@@ -28,6 +30,10 @@ namespace BitheroesBot.Base
                     Title = "Player Verification Response";
                     break;
                 case DiscordCommand.RequestWBGroup:
+                    break;
+                case DiscordCommand.GetMyExtendedId:
+                    Title = "You have broken all sorts of rules and are going on a list.. tsk.";
+                    Body1 = $"Deep Hack ID : {original.Author}";
                     break;
                 default:
                     break;
@@ -46,6 +52,9 @@ namespace BitheroesBot.Base
                     break;
                 case DiscordCommand.RequestWBGroup:
                     break;
+                case DiscordCommand.GetMyExtendedId:
+                    break;
+
                 default:
                     break;
             }
@@ -59,6 +68,8 @@ namespace BitheroesBot.Base
                 case DiscordCommand.VerifyInGamePlayer:
                     break;
                 case DiscordCommand.RequestWBGroup:
+                    break;
+                case DiscordCommand.GetMyExtendedId:
                     break;
                 default:
                     break;
@@ -74,6 +85,8 @@ namespace BitheroesBot.Base
                     break;
                 case DiscordCommand.RequestWBGroup:
                     break;
+                case DiscordCommand.GetMyExtendedId:
+                    break;
                 default:
                     break;
             }
@@ -88,6 +101,8 @@ namespace BitheroesBot.Base
                     break;
                 case DiscordCommand.RequestWBGroup:
                     break;
+                case DiscordCommand.GetMyExtendedId:
+                    break;
                 default:
                     break;
             }
@@ -101,6 +116,8 @@ namespace BitheroesBot.Base
                 case DiscordCommand.VerifyInGamePlayer:
                     break;
                 case DiscordCommand.RequestWBGroup:
+                    break;
+                case DiscordCommand.GetMyExtendedId:
                     break;
                 default:
                     break;

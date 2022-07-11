@@ -12,7 +12,8 @@ namespace BitheroesBot.Enums
             //K.I.S.S.  Add more later, just putting framework together. 
             None = 0,
             VerifyInGamePlayer = 1,
-            RequestWBGroup = 2, 
-        }
+            RequestWBGroup = 2,
+            GetMyExtendedId = 3,
+    }
     }
 
